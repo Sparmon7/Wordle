@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.*;
 public class Main {
 	public static void main(String[] args) throws Exception{
-		//whether I want to measure stats or use helper
+		//whether I want to measure stats or I want to use helper
 		Boolean statistics = false;
 		
 		if(statistics) {
