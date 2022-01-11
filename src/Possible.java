@@ -80,9 +80,9 @@ public class Possible {
 				maxScore = score;
 				ret2 = b;
 				score2 = 0;
-				for(int h=0; h <5; h++) {
+				for(int h=0; h < 5; h++) {
 					Boolean fine = true;
-					for(int g=0; g< greenPlaces.size();g++) {
+					for(int g=0; g < greenPlaces.size();g++) {
 						if(Integer.valueOf(greenPlaces.get(g).substring(1)) == h) {
 							fine = false;
 						}
@@ -94,9 +94,9 @@ public class Possible {
 				//settles ties
 			}else if(score == maxScore) {
 				int secondary = 0;
-				for(int h=0; h <5; h++) {
+				for(int h=0; h < 5; h++) {
 					Boolean fine = true;
-					for(int g=0; g< greenPlaces.size();g++) {
+					for(int g=0; g < greenPlaces.size();g++) {
 						if(Integer.valueOf(greenPlaces.get(g).substring(1)) == h) {
 							fine = false;
 						}
@@ -159,9 +159,9 @@ public class Possible {
 		for(int j = 0; j < 5; j++) {
 			Boolean same = false;
 			int k =0;
-			if(possib.size()>=1) {
+			if(possib.size() >= 1) {
 				same = true;
-				while(same && k<possib.size() - 1) {
+				while(same && k < possib.size() - 1) {
 					if(!possib.get(k).substring(j,j+1).equals(possib.get(k+1).substring(j,j+1))) {
 						same = false;
 					}
@@ -326,7 +326,7 @@ public class Possible {
 	
 	//prints possible solutions
 	public Boolean print() {
-		if(possib.size()>1) {
+		if(possib.size() > 1) {
 			System.out.print("" + possib.size() + " possible solutions: ");
 			for(String s: possib) {
 				System.out.print(s + " ");
