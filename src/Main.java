@@ -103,6 +103,7 @@ public class Main {
 		//ENUMS
 		//UPLOAD TXT FILES AND RELATIVE PATHS; GOOGLE JAVA RELATIVE PATH 
 		//PERFECT ALGORITHM WITH MINIMIZE SPREAD OF POSSIBLES
+		//Algortihm must optimize based on already greens so that only in most common places
 
 	}
 
