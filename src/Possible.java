@@ -50,7 +50,21 @@ public class Possible {
 			}
 
 			tab[5][a] = tab[0][a] + tab[1][a] + tab[2][a] + tab[3][a] + tab[4][a] - (count*possib.size());
+		
 		}
+		
+		//DOWN TO CHECKING HERE AND CHECK ADDING GREEN PLACES
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		//scores each possible guess based on letters and placement (THE MAIN PART OF THE ALGORITHM)
@@ -64,11 +78,7 @@ public class Possible {
 				if(!b.substring(0,i).contains(now) && !yellowPlaces.contains(now + String.valueOf(i)) && !greenPlaces.contains(now + String.valueOf(i))) {
 					Boolean okay = true;
 					if(yellows.contains(now)||greens.contains(now)) {
-						for(int z = 0; z < greenPlaces.size(); z++) {
-							if(Integer.valueOf(greenPlaces.get(z).substring(1)) == i) {
-								okay = false;
-							}
-						}
+						score+= tab[i][asc(now)];
 					}
 						
 					if(okay) {

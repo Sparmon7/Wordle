@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws Exception{
 		//whether I want to measure stats or I want to use helper
-		Boolean statistics = false;
+		Boolean statistics = true;
 		
 		if(statistics) {
 			//THIS MEASURES STATISTICS OF THE ALGORITHM AS A WHOLE
