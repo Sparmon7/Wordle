@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws Exception{
 		//whether I want to measure stats or I want to use helper
-		Boolean statistics = true;
+		Boolean statistics = false;
 		
 		if(statistics) {
 			//THIS MEASURES STATISTICS OF THE ALGORITHM AS A WHOLE
@@ -94,7 +94,6 @@ public class Main {
 		
 
 		
-		//ALGORITHM IMPROVE
 		//SHARABLE WITH STATS REDDIT/TWITTER/LINKEDIN/WEB WITH JAVA WEB FRAMEWORK???
 		//CHARACTERS INSTEAD OF SUBSTRING
 		//COMMENTS AND VARIABLE NAMES
@@ -103,7 +102,7 @@ public class Main {
 		//ENUMS
 		//UPLOAD TXT FILES AND RELATIVE PATHS; GOOGLE JAVA RELATIVE PATH 
 		//PERFECT ALGORITHM WITH MINIMIZE SPREAD OF POSSIBLES
-		//Algortihm must optimize based on already greens so that only in most common places
+		//Algortihm must optimize based on already greens/yellows so that only in most common places if poss has them there!
 
 	}
 
