@@ -101,6 +101,7 @@ public class Main {
 		//REGEX
 		//ENUMS
 		//UPLOAD TXT FILES AND RELATIVE PATHS; GOOGLE JAVA RELATIVE PATH 
+		//two yellows or yellow and green of same letter make so word must have two in it or 3, etc.
 		//PERFECT ALGORITHM WITH MINIMIZE SPREAD OF POSSIBLES
 		//Algortihm must optimize based on already greens/yellows so that only in most common places if poss has them there!
 
