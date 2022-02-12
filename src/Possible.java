@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.Scanner;
+
 import java.util.*;
 public class Possible {
 	
@@ -54,15 +55,6 @@ public class Possible {
 		}
 		
 		//DOWN TO CHECKING HERE AND CHECK WHERE ADDING GREEN PLACES
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
@@ -138,58 +130,151 @@ public class Possible {
 		return  ret2;
 	}
 	
-	public void guess(String guess, String result){
-		//USE NYG
-		for(int i = 0; i < 5; i++) {
-			if(result.substring(i,i+1).equals("N")) {
-				//figures out if not actually in word or should be treated as a yellow
-				boolean good = false;
-				for(int mine = 0; mine < 5; mine++) {
-					if(guess.substring(mine,mine+1).equals(guess.substring(i,i+1)) && !result.substring(mine,mine+1).equals("N") ) {
-						good = true;
-					}
-					
-				}
-				if(good) {
-					yellow(guess.substring(i,i+1), i);
-					yellowPlaces.add(guess.substring(i,i+1) + String.valueOf(i));
-					yellows.add(guess.substring(i,i+1));
-				}else {
-					none(guess.substring(i,i+1));
-				}
-			}else if(result.substring(i,i+1).equals("Y")) {
-				yellow(guess.substring(i,i+1), i);
-				yellowPlaces.add(guess.substring(i,i+1) + String.valueOf(i));
-				yellows.add(guess.substring(i,i+1));
-			}else{
-				green(guess.substring(i,i+1),i);
+	
+	//from here until comments, this is from new thing
+	
+	enum color{
+		green,
+		yellow,
+		none
+	}
+	
+	private boolean realN(char c, String guess, color[] result) {
+		for(int i = 0; i < guess.length(); i++) {
+			if(guess.charAt(i) == c && result[i] != color.none) {
+				return false;
 			}
 		}
-		//checks to see if all remaining share a common letter and if so, treats as green
-		for(int j = 0; j < 5; j++) {
-			Boolean same = false;
-			int k =0;
-			if(possib.size() >= 1) {
-				same = true;
-				while(same && k < possib.size() - 1) {
-					if(!possib.get(k).substring(j,j+1).equals(possib.get(k+1).substring(j,j+1))) {
-						same = false;
-					}
-					k++;
-				}
+		return true;
+	}
+	
+	public void guess(String guess, String res) {
+		guess = guess.toUpperCase();
+		res = res.toUpperCase();
+		color[] result = new color[5];
+		for(int i = 0; i < 5; i++) {
+			if(res.charAt(i) == 'G') {
+				result[i] = color.green;
+			}else if(res.charAt(i) == 'N') {
+				result[i] = color.none;
+			}else {
+				result[i] = color.yellow;
 			}
+		}
+		narrow(guess, result);
+	}
+	
+	private void narrow(String guess, color[] res) {
+		int j = possib.size() - 1;
+		for(; j >=0; j--){
 
-			if(same) {
-				String letter = possib.get(0).substring(j,j+1);
-				if(!greens.contains(letter)) {
-					greens.add(letter);
-					if(!greenPlaces.contains(letter+String.valueOf(j))) {
-						greenPlaces.add(letter + String.valueOf(j));
+			String s = possib.get(j);
+			boolean removed = false;
+			int i = 0;
+			while(!removed && i < 5) {
+				char c = guess.charAt(i);
+				if(numChars(c,s)< numRelChars(c,guess,res)) {
+					possib.remove(s);
+					removed = true;
+				}else if(res[i] == color.green) {
+					if(s.charAt(i) != c){
+						possib.remove(s);
+						removed = true;
+					}
+				}else if(res[i] == color.none){
+					if(realN(c, guess, res) && numChars(c, s) > 0 ) {
+						possib.remove(s);
+						removed = true;
+					}else if(s.charAt(i) == c){
+						possib.remove(s);
+						removed = true;
+					}
+
+				}else {
+					if(s.indexOf(c) == -1|| s.charAt(i)==c){
+						possib.remove(s);
+						removed = true;
 					}
 				}
+				i++;
 			}
 		}
 	}
+	
+	private int numChars(char c, String s) {
+		int ret = 0;
+		for(int i = 0; i < s.length(); i++) {
+			if(s.charAt(i) == c) {
+				ret++;
+			}
+		}
+		return ret;
+	}
+	
+	private int numRelChars(char c, String s, color[] res) {
+		int ret = 0;
+		for(int i = 0; i < s.length(); i++) {
+			if(s.charAt(i) == c && res[i] != color.none) {
+				ret++;
+			}
+		}
+		return ret;
+	}
+	
+//	public void guess(String guess, String result){
+//		//USE NYG
+//		guess = guess.toUpperCase();
+//		result = result.toUpperCase();
+//		for(int i = 0; i < 5; i++) {
+//			if(result.substring(i,i+1).equals("N")) {
+//				//figures out if not actually in word or should be treated as a yellow
+//				boolean good = false;
+//				for(int mine = 0; mine < 5; mine++) {
+//					if(guess.substring(mine,mine+1).equals(guess.substring(i,i+1)) && !result.substring(mine,mine+1).equals("N") ) {
+//						good = true;
+//					}
+//					
+//				}
+//				if(good) {
+//					yellow(guess.substring(i,i+1), i);
+//					yellowPlaces.add(guess.substring(i,i+1) + String.valueOf(i));
+//					yellows.add(guess.substring(i,i+1));
+//				}else {
+//					none(guess.substring(i,i+1));
+//				}
+//			}else if(result.substring(i,i+1).equals("Y")) {
+//				yellow(guess.substring(i,i+1), i);
+//				yellowPlaces.add(guess.substring(i,i+1) + String.valueOf(i));
+//				yellows.add(guess.substring(i,i+1));
+//			}else{
+//				green(guess.substring(i,i+1),i);
+//			}
+//		}
+//		//checks to see if all remaining share a common letter and if so, treats as green
+//		for(int j = 0; j < 5; j++) {
+//			Boolean same = false;
+//			int k =0;
+//			if(possib.size() >= 1) {
+//				same = true;
+//				while(same && k < possib.size() - 1) {
+//					if(!possib.get(k).substring(j,j+1).equals(possib.get(k+1).substring(j,j+1))) {
+//						same = false;
+//					}
+//					k++;
+//				}
+//			}
+//
+//			if(same) {
+//				String letter = possib.get(0).substring(j,j+1);
+//				if(!greens.contains(letter)) {
+//					greens.add(letter);
+//					if(!greenPlaces.contains(letter+String.valueOf(j))) {
+//						greenPlaces.add(letter + String.valueOf(j));
+//					}
+//				}
+//			}
+//		}
+//	}
 	
 	public void none(String n) {
 		for(int i = possib.size() - 1; i >= 0; i--) {

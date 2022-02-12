@@ -3,8 +3,18 @@ import java.util.Scanner;
 import java.util.*;
 public class Main {
 	public static void main(String[] args) throws Exception{
+//		Modified test= new Modified();
+//		String guess = "lsits";
+//		String res = "nynny";
+//		test.guess(guess, res);
+//		
+//		Possible tester = new Possible();
+//		tester.guess(guess, res);
+//		tester.print();
+//		System.out.println("GUESS: " + tester.best());
+		
 		//whether I want to measure stats or I want to use helper
-		Boolean statistics = false;
+		Boolean statistics = true;
 		
 		if(statistics) {
 			//THIS MEASURES STATISTICS OF THE ALGORITHM AS A WHOLE
@@ -98,13 +108,18 @@ public class Main {
 		//CHARACTERS INSTEAD OF SUBSTRING
 		//COMMENTS AND VARIABLE NAMES
 		//3 blue 1 brown
+		//read me
 		//MAKE IT SO NOT PRINTING "GUESS: ERROR"
 		//REGEX
-		//ENUMS
+		//ENUMS and chars
+		//comments andclear variables
 		//UPLOAD TXT FILES AND RELATIVE PATHS; GOOGLE JAVA RELATIVE PATH 
 		//two yellows or yellow and green of same letter make so word must have two in it or 3, etc.
 		//PERFECT ALGORITHM WITH MINIMIZE SPREAD OF POSSIBLES
 		//Algortihm must optimize based on already greens/yellows so that only in most common places if poss has them there!
+		
+		
+		//MAKE SURE GUESSES ARE ALWAYS MINIMIZED AND SMALLER THAN POSSIBLE, THNE WORK ON GUESSING
 
 	}
 
