@@ -25,6 +25,7 @@ public class Possible {
 	    while(sc1.hasNext()) {
 		    possib.add(sc1.next().toUpperCase());
 	    }
+//	    possib = init;
 	    
 
 
@@ -55,16 +56,7 @@ public class Possible {
 		
 		//DOWN TO CHECKING HERE AND CHECK WHERE ADDING GREEN PLACES
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 		
 		//scores each possible guess based on letters and placement (THE MAIN PART OF THE ALGORITHM)
