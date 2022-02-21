@@ -31,12 +31,12 @@ public class Modified{
 	
 	//this one determines best guess
 	public String best() {
-		if(possib.size() == 1) {
+		if(possib.size() == 1 || possib.size() == 2) {
 			return possib.get(0);
 		}else if(possib.size() == 0) {
 			System.out.println("FAILURE");
 			return "FAILURE!";
-		}else {
+		}else{
 			String best = "ERROR!";
 			int lowestWorst = Integer.MAX_VALUE;
 			for(int i = 0; i < init.size(); i++) {
@@ -304,9 +304,12 @@ public class Modified{
 	}
 	
 	public void print(){
+		System.out.println();
+		System.out.print("Possible solutions: ");
 		for(int i = 0; i < possib.size(); i++) {
 			System.out.print(possib.get(i) + " ");
 		}
+		System.out.println();
 		System.out.println("Size: "+ possib.size());
 	}
 	

@@ -59,10 +59,7 @@ public class Main {
 		}else {
 			//This is the Wordle helper, which runs through the console
 			Modified tester = new Modified();
-			tester.guess("ARISE", "NNNNN");
-			tester.guess("BLUDY", "NNGNN");
-			tester.guess("COMET", "GNNNN");
-			tester.guess("NAVAL", "NNNNN");
+			tester.guess("ARISE", "ygnnn");
 			System.out.println(tester.best());
 			tester.print();
 			
@@ -121,6 +118,7 @@ public class Main {
 		//CHARACTERS INSTEAD OF SUBSTRING
 		//COMMENTS AND VARIABLE NAMES
 		//3 blue 1 brown
+		//MAKE SURE accurately limit possible words including too many and too few letters in both
 		//read me
 		//MAKE IT SO NOT PRINTING "GUESS: ERROR"
 		//REGEX
