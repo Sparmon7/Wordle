@@ -7,6 +7,7 @@ public class Modified{
 	
 	
 	public Modified() throws Exception{
+		//reads in possible guesses
 		File file1 = new File("C:\\Users\\sparm\\OneDrive\\Desktop\\WORDLEGUESSES.txt");
 	    Scanner sc = new Scanner(file1);
 	    while(sc.hasNext()) {
@@ -29,7 +30,7 @@ public class Modified{
 	
 	//this one determines best guess
 	public String best() {
-		String best = init.get(0);
+		String best = "ERROR!";
 		int lowestWorst = Integer.MAX_VALUE;
 		for(int i = 0; i < init.size(); i++) {
 			String s = init.get(i);
@@ -52,11 +53,11 @@ public class Modified{
 			for(int dig = 0; dig < 5; dig++) {
 				int rem = cur%3;
 				if(rem == 0){
-					res+= "G";
+					res+= "N";
 				}else if(rem == 1) {
 					res+= "Y";
 				}else {
-					res+= "N";
+					res+= "G";
 				}
 				cur-= rem;
 				cur /=3;
