@@ -4,6 +4,7 @@ import java.util.*;
 public class Modified{
 	ArrayList<String> possib = new ArrayList<String>();
 	ArrayList<String> init = new ArrayList<String>();
+	ArrayList<String> copy = new ArrayList<String>();
 	
 	
 	public Modified() throws Exception{
@@ -30,22 +31,29 @@ public class Modified{
 	
 	//this one determines best guess
 	public String best() {
-		String best = "ERROR!";
-		int lowestWorst = Integer.MAX_VALUE;
-		for(int i = 0; i < init.size(); i++) {
-			String s = init.get(i);
-			ArrayList<String> poss = possib;
-			int elim = worstCase(s, poss);
-			if(elim < lowestWorst) {
-				lowestWorst = elim;
-				best = s;
+		if(possib.size() == 1) {
+			return possib.get(0);
+		}else if(possib.size() == 0) {
+			System.out.println("FAILURE");
+			return "FAILURE!";
+		}else {
+			String best = "ERROR!";
+			int lowestWorst = Integer.MAX_VALUE;
+			for(int i = 0; i < init.size(); i++) {
+				String s = init.get(i);
+				int elim = worstCase(s, lowestWorst);
+				if(elim < lowestWorst) {
+					lowestWorst = elim;
+					best = s;
+				}
+				System.out.println(s + elim);
 			}
-			System.out.println(s + elim);
+			return best;
 		}
-		return best;		
+				
 	}
 	//
-	private int worstCase(String s, ArrayList<String> poss) {
+	private int worstCase(String s, int lowestWorst) {
 		int worst = 0;
 		for(int i= 0; i < 243; i++) {
 			String res = "";
@@ -62,17 +70,19 @@ public class Modified{
 				cur-= rem;
 				cur /=3;
 			}
-			ArrayList<String> remaining = poss;
-			int size = altGuess(s, res, remaining);
+			int size = altGuess(s, res);
 			if(size> worst) {
 				worst = size;
+			}
+			if(worst > lowestWorst) {
+				return worst;
 			}
 		}
 		return worst;
 	}
 	
 	
-	public int altGuess(String guess, String res, ArrayList<String> poss) {
+	public int altGuess(String guess, String res) {
 		guess = guess.toUpperCase();
 		res = res.toUpperCase();
 		color[] result = new color[5];
@@ -85,8 +95,8 @@ public class Modified{
 				result[i] = color.yellow;
 			}
 		}
-		ArrayList<String> possy = poss;
-		return narrow(guess, result, possy).size();
+		narrow(guess, result);
+		return copy.size();
 	}
 	
 	private boolean realN(char c, String guess, color[] result) {
@@ -111,45 +121,53 @@ public class Modified{
 				result[i] = color.yellow;
 			}
 		}
-		possib = narrow(guess, result, possib);
+		narrow(guess, result);
+		possib.clear();
+		for(int k = 0; k < copy.size(); k++) {
+			possib.add(copy.get(k));
+		}
 	}
 	
-	private ArrayList<String> narrow(String guess, color[] res, ArrayList<String> poss) {
-		int j = poss.size() - 1;
+	private void narrow(String guess, color[] res) {
+		//THIS IS WHAT NEEDS TO BE FIXED!!!
+		copy.clear();
+		for(int k = 0; k < possib.size(); k++) {
+			copy.add(possib.get(k));
+		}
+		int j = copy.size() - 1;
 		for(; j >=0; j--){
-
-			String s = poss.get(j);
+			
+			String s = copy.get(j);
 			boolean removed = false;
 			int i = 0;
 			while(!removed && i < 5) {
 				char c = guess.charAt(i);
 				if(numChars(c,s)< numRelChars(c,guess,res)) {
-					poss.remove(s);
+					copy.remove(s);
 					removed = true;
 				}else if(res[i] == color.green) {
 					if(s.charAt(i) != c){
-						poss.remove(s);
+						copy.remove(s);
 						removed = true;
 					}
 				}else if(res[i] == color.none){
 					if(realN(c, guess, res) && numChars(c, s) > 0 ) {
-						poss.remove(s);
+						copy.remove(s);
 						removed = true;
 					}else if(s.charAt(i) == c){
-						poss.remove(s);
+						copy.remove(s);
 						removed = true;
 					}
 
 				}else {
 					if(s.indexOf(c) == -1|| s.charAt(i)==c){
-						poss.remove(s);
+						copy.remove(s);
 						removed = true;
 					}
 				}
 				i++;
 			}
 		}
-		return poss;
 	}
 	
 	private int numChars(char c, String s) {
@@ -287,7 +305,7 @@ public class Modified{
 	
 	public void print(){
 		for(int i = 0; i < possib.size(); i++) {
-			//System.out.print(s + " ")
+			System.out.print(possib.get(i) + " ");
 		}
 		System.out.println("Size: "+ possib.size());
 	}
