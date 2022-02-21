@@ -46,7 +46,7 @@ public class Modified{
 					lowestWorst = elim;
 					best = s;
 				}
-				System.out.println(s + elim);
+				//System.out.println(s + elim);
 			}
 			return best;
 		}

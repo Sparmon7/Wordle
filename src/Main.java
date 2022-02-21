@@ -14,31 +14,43 @@ public class Main {
 //		System.out.println("GUESS: " + tester.best());
 		
 		//whether I want to masure stats or I want to use helper
-		Boolean statistics = false;
+		Boolean statistics = true;
 		
 		if(statistics) {
 			//THIS MEASURES STATISTICS OF THE ALGORITHM AS A WHOLE
 			//CURRENT AVERAGE NUMBER OF GUESSES IS 3.7 WITH ALL BEING WITHIN 6
+			
 			int sum = 0;
 			int max  =0;
 			String bads = "";
-			Possible orig = new Possible();
+			Modified orig = new Modified();
 			for(String s: orig.possib) {
 				int guesses = 0;
 				System.out.println();
 				System.out.println(s);
 				Game tester = new Game(s);
-				Possible test = new Possible();
+				Modified test = new Modified();
 				Boolean finished = false;
 				String res;
 				while(!finished) {
-					res = tester.play(test.best().substring(0,5));
-					System.out.println(test.best().substring(0,5) + " " + res);
-					guesses++;
-					if(res.equals("GGGGG")) {
-						finished = true;
+					if(guesses == 0) {
+						res = tester.play("ARISE");
+						System.out.println("ARISE " + res);
+						guesses++;
+						if(res.equals("GGGGG")) {
+							finished = true;
+						}else {
+							test.guess("ARISE", res);
+						}
 					}else {
-						test.guess(test.best().substring(0,5), res);
+						res = tester.play(test.best().substring(0,5));
+						System.out.println(test.best().substring(0,5) + " " + res);
+						guesses++;
+						if(res.equals("GGGGG")) {
+							finished = true;
+						}else {
+							test.guess(test.best().substring(0,5), res);
+						}
 					}
 				}
 				sum+= guesses;
@@ -55,6 +67,44 @@ public class Main {
 			System.out.println(((double)sum)/ orig.possib.size());
 			System.out.println(max);
 			System.out.println(bads);
+			
+			
+//			int sum = 0;
+//			int max  =0;
+//			String bads = "";
+//			Possible orig = new Possible();
+//			for(String s: orig.possib) {
+//				int guesses = 0;
+//				System.out.println();
+//				System.out.println(s);
+//				Game tester = new Game(s);
+//				Possible test = new Possible();
+//				Boolean finished = false;
+//				String res;
+//				while(!finished) {
+//					res = tester.play(test.best().substring(0,5));
+//					System.out.println(test.best().substring(0,5) + " " + res);
+//					guesses++;
+//					if(res.equals("GGGGG")) {
+//						finished = true;
+//					}else {
+//						test.guess(test.best().substring(0,5), res);
+//					}
+//				}
+//				sum+= guesses;
+//				if(guesses == max) {
+//					bads+= s + " ";
+//				}else if(guesses> max) {
+//					bads = s + " ";
+//					max= guesses;
+//				}
+//				System.out.println(guesses);
+//			}
+//			System.out.println();
+//			System.out.println();
+//			System.out.println(((double)sum)/ orig.possib.size());
+//			System.out.println(max);
+//			System.out.println(bads);
 			
 		}else {
 			//This is the Wordle helper, which runs through the console
