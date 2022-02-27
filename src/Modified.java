@@ -303,14 +303,17 @@ public class Modified{
 		}
 	}
 	
-	public void print(){
-		System.out.println();
-		System.out.print("Possible solutions: ");
-		for(int i = 0; i < possib.size(); i++) {
-			System.out.print(possib.get(i) + " ");
+	public boolean print(){
+		if(possib.size() > 1){
+			System.out.println();
+			System.out.print( possib.size() + " Possible solutions: ");
+			for(int i = 0; i < possib.size(); i++) {
+				System.out.print(possib.get(i) + " ");
+			}
+			System.out.println();
+			return false;
 		}
-		System.out.println();
-		System.out.println("Size: "+ possib.size());
+		return true;
 	}
 	
 }

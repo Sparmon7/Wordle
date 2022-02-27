@@ -14,7 +14,7 @@ public class Main {
 //		System.out.println("GUESS: " + tester.best());
 		
 		//whether I want to masure stats or I want to use helper
-		Boolean statistics = true;
+		Boolean statistics = false;
 		
 		if(statistics) {
 			//THIS MEASURES STATISTICS OF THE ALGORITHM AS A WHOLE
@@ -108,57 +108,50 @@ public class Main {
 			
 		}else {
 			//This is the Wordle helper, which runs through the console
-			Modified tester = new Modified();
-			tester.guess("ARISE", "ygnnn");
-			System.out.println(tester.best());
-			tester.print();
+		
 			
-			
-			
-			
-			
-//			Possible test = new Possible();		
-//			Scanner scanner = new Scanner(System.in);
-//			System.out.println("Welcome to the Wordle Helper, an app made to assist you in beating the Wordle! It provides helpful guesses to eliminate many words, while also listing every possible word :)");
-//			System.out.println("Guess: " + test.best());
-//			Boolean done = false;
-//			while(!done) {
-//				Boolean guessy = false;
-//				String g = "";
-//				while(!guessy) {
-//					System.out.println("Please type in your guess and press ENTER");
-//					g = scanner.nextLine().toUpperCase();
-//					if(g.length() == 5 && g.matches("[a-zA-Z]+")) {
-//						guessy = true;
-//					}
-//				}
-//				
-//				
-//				Boolean resulty = false;
-//				String result = "";
-//				while(!resulty) {
-//					resulty = true;
-//					System.out.println("Please type in the result of that guess where G is Green, Y is Yellow, and N is gray, and press ENTER. (for instance, GGNNY or NNNYG)");
-//					result = scanner.nextLine().toUpperCase();
-//					int i = 0;
-//					for(i = 0; i < result.length(); i++) {
-//						String s = result.substring(i,i+1).toUpperCase();
-//						if(!(s.equals("Y") || s.equals("G")|| s.equals("N"))) {
-//							resulty = false;
-//						}
-//					}
-//					if(i !=5) {
-//						resulty = false;
-//					}
-//				}
-//
-//				
-//				test.guess(g, result);
-//				done = test.print();
-//
-//				System.out.println("GUESS: " + test.best());
-//			}
-//			System.exit(0);
+			Modified test = new Modified();		
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Welcome to the Wordle Helper, an app made to assist you in beating the Wordle! It provides helpful guesses to eliminate many words, while also listing every possible word :)");
+			System.out.println("Guess: ARISE");
+			Boolean done = false;
+			while(!done) {
+				Boolean guessy = false;
+				String g = "";
+				while(!guessy) {
+					System.out.println("Please type in your guess and press ENTER");
+					g = scanner.nextLine().toUpperCase();
+					if(g.length() == 5 && g.matches("[a-zA-Z]+")) {
+						guessy = true;
+					}
+				}
+				
+				
+				Boolean resulty = false;
+				String result = "";
+				while(!resulty) {
+					resulty = true;
+					System.out.println("Please type in the result of that guess where G is Green, Y is Yellow, and N is gray, and press ENTER. (for instance, GGNNY or NNNYG)");
+					result = scanner.nextLine().toUpperCase();
+					int i = 0;
+					for(i = 0; i < result.length(); i++) {
+						String s = result.substring(i,i+1).toUpperCase();
+						if(!(s.equals("Y") || s.equals("G")|| s.equals("N"))) {
+							resulty = false;
+						}
+					}
+					if(i !=5) {
+						resulty = false;
+					}
+				}
+
+				
+				test.guess(g, result);
+				done = test.print();
+
+				System.out.println("GUESS: " + test.best());
+			}
+			System.exit(0);
 		}
 	
 		
