@@ -114,15 +114,20 @@ public class Main {
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("Welcome to the Wordle Helper, an app made to assist you in beating the Wordle! It provides helpful guesses to eliminate many words, while also listing every possible word :)");
 			System.out.println("Guess: ARISE");
+			String bestie = "ARISE";
 			Boolean done = false;
 			while(!done) {
 				Boolean guessy = false;
 				String g = "";
 				while(!guessy) {
-					System.out.println("Please type in your guess and press ENTER");
+					System.out.println("Please type in your guess and press ENTER, or type . to automatically use the computer's suggested guess");
 					g = scanner.nextLine().toUpperCase();
 					if(g.length() == 5 && g.matches("[a-zA-Z]+")) {
 						guessy = true;
+					}
+					if(g.equals(".")){
+						guessy = true;
+						g = bestie;
 					}
 				}
 				
@@ -148,8 +153,9 @@ public class Main {
 				
 				test.guess(g, result);
 				done = test.print();
+				bestie = test.best();
 
-				System.out.println("GUESS: " + test.best());
+				System.out.println("GUESS: " + bestie);
 			}
 			System.exit(0);
 		}
