@@ -166,7 +166,6 @@ public class Main {
 		//SHARABLE WITH STATS REDDIT/TWITTER/LINKEDIN/WEB WITH JAVA WEB FRAMEWORK???
 		//CHARACTERS INSTEAD OF SUBSTRING
 		//COMMENTS AND VARIABLE NAMES
-		//3 blue 1 brown
 		//MAKE SURE accurately limit possible words including too many and too few letters in both
 		//read me
 		//MAKE IT SO NOT PRINTING "GUESS: ERROR"
@@ -177,12 +176,16 @@ public class Main {
 		//two yellows or yellow and green of same letter make so word must have two in it or 3, etc.
 		//PERFECT ALGORITHM WITH MINIMIZE SPREAD OF POSSIBLES
 		//Algortihm must optimize based on already greens/yellows so that only in most common places if poss has them there!
-		
-		
-		//MAKE SURE GUESSES ARE ALWAYS MINIMIZED AND SMALLER THAN POSSIBLE, THNE WORK ON GUESSING
-		//DEBUG the 0'S!!!
-		//make so if two letters in guess but only one is in answer, remove all with two
-
+		//MAKE SURE GUESSES ARE ALWAYS MINIMIZED
+		//test statistics vs old and 3blue1brown 3.421 worst case 5 and tyler glaiel 3.4955
+		//see into future and do recursive for all and future steps look?
+		//speed up
+		//read me
+		//presentable
+		//resume git twit linked
+		//sae
+		//make sure accuraltet limit possib with multiples in both guesses and in real solutions
+		//ascii improve?
 	}
 
 }
