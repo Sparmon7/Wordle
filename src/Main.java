@@ -186,6 +186,8 @@ public class Main {
 		//sae
 		//make sure accuraltet limit possib with multiples in both guesses and in real solutions
 		//ascii improve?
+		//retest first guess after improvements
+		//find weighted average guesses instead of maximize lowest
 	}
 
 }
