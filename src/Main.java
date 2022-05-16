@@ -184,6 +184,8 @@ public class Main {
 		//presentable
 		//resume git twit linked
 		//sae
+		//hardcoding
+		//speed up
 		//make sure accuraltet limit possib with multiples in both guesses and in real solutions
 		//ascii improve?
 		//retest first guess after improvements
